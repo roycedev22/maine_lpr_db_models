@@ -1,0 +1,69 @@
+# pyproject.toml
+[build-system]
+requires = ["setuptools>=61.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "maine_lpr_db_models"
+version = "1.0.0"
+description = "Shared database models"
+authors = [
+    {name = "Ron Royce", email = "ronald.royce@pavemobility.com"},
+]
+requires-python = ">=3.11"
+dependencies = [
+    "sqlalchemy>=2.0.0",
+    "alembic>=1.12.0",
+    "pydantic>=2.0.0",
+    "click>=8.0.0",
+]
+
+[project.optional-dependencies]
+mysql = [
+    "mysqlclient>=2.2.0",
+]
+testing = [
+    "pytest>=7.0.0",
+    "pytest-cov>=4.1.0",
+    "pytest-sqlalchemy>=0.2.1",
+]
+dev = [
+    "black",
+    "isort",
+    "mypy",
+    "sqlalchemy[mypy]",
+    "ruff",
+]
+
+[project.scripts]
+db-init = "database_models.cli:init_db"
+db-migrate = "database_models.cli:run_migrations"
+
+[tool.setuptools]
+package-dir = {"" = "maine_lpr_db_models"}
+packages = ["maine_lpr_db_models"]
+
+[tool.setuptools.package-data]
+database_models = ["py.typed"]
+
+[tool.black]
+line-length = 90
+target-version = ["py311"]
+
+[tool.isort]
+profile = "black"
+multi_line_output = 3
+line_length = 90
+
+[tool.mypy]
+python_version = "3.8"
+strict = true
+plugins = ["sqlalchemy.ext.mypy.plugin"]
+
+[tool.pytest.ini_options]
+addopts = "-ra -q --cov=maine_lpr_db_models"
+testpaths = ["tests"]
+
+[tool.ruff]
+line-length = 90
+target-version = "py311"

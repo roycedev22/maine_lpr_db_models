@@ -4,7 +4,7 @@ MAJOR = 1
 MINOR = 0
 PATCH = 0
 
-PACKAGE_NAME = "maine_lpr_db_models"
+PACKAGE_NAME = "maine=lpr-db-models"
 
 setup(
     name=PACKAGE_NAME,

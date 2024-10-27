@@ -10,6 +10,7 @@ setup(
     name=PACKAGE_NAME,
     version=f"{MAJOR}.{MINOR}.{PATCH}",
     packages=find_packages(),
+    package_dir={"": "maine_lpr_db_models"},
     install_requires=[
         "sqlalchemy>=2.0.0",
         "alembic>=1.12.0",

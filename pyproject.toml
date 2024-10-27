@@ -40,7 +40,7 @@ db-init = "database_models.cli:init_db"
 db-migrate = "database_models.cli:run_migrations"
 
 [tool.setuptools]
-package-dir = {"" = "maine_lpr_db_models"}
+package-dir = {"maine_lpr_db_models" = "./maine_lpr_db_models"}
 packages = ["maine_lpr_db_models"]
 
 [tool.setuptools.package-data]
